@@ -176,6 +176,7 @@ jobs:
       # Upload the test failure report (JUnit XML format)
       - name: Upload test failure report
         uses: actions/upload-artifact@v4
+        if: failure()
         with:
-          name: test-results
+          name: test-results-{{ matrix.python-version }}
           path: reports/test-results.xml
