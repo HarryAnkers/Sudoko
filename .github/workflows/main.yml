@@ -165,4 +165,17 @@ jobs:
 
       - name: Run Pytest for tests
         run: |
-          poetry run pytest --maxfail=1 --disable-warnings -q
+            poetry run pytest --maxfail=1 --disable-warnings -q --cov=src --cov-report=html --junitxml=reports/test-results.xml tests/
+
+      # Upload the test coverage report
+      - name: Upload coverage report to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          file: htmlcov/index.html  # Path to the HTML coverage report
+
+      # Upload the test failure report (JUnit XML format)
+      - name: Upload test failure report
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-results
+          path: reports/test-results.xml
