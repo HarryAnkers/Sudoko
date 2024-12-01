@@ -28,7 +28,6 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-          cache: 'pip'
 
       # Install Poetry
       - name: Install Poetry
@@ -36,22 +35,27 @@ jobs:
           curl -sSL https://install.python-poetry.org | python3 -
           export PATH="$HOME/.local/bin:$PATH"
 
+      - name: Restore Cache Poetry dependencies
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            ~/.cache/pypoetry
+            ~/.cache/pip
+          key: ${{ runner.os }}-poetry-${{ matrix.python-version }}
+
       # Install dependencies with Poetry
       - name: Install dependencies
         run: |
           poetry install --no-interaction
 
       # Cache Poetry dependencies
-      - name: Cache Poetry dependencies
-        uses: actions/cache@v3
+      - name: Save Cache Poetry dependencies
+        uses: actions/cache/restore@v4
         with:
           path: |
             ~/.cache/pypoetry
             ~/.cache/pip
-          key: ${{ runner.os }}-poetry-${{ hashFiles('**/pyproject.toml') }}
-          restore-keys: |
-            ${{ runner.os }}-poetry-
-
+          key: ${{ runner.os }}-poetry-${{ matrix.python-version }}
   lint-ruff:
     needs: install-dependencies
     runs-on: ubuntu-latest
@@ -71,6 +75,18 @@ jobs:
         run: |
           curl -sSL https://install.python-poetry.org | python3 -
           export PATH="$HOME/.local/bin:$PATH"
+      
+      - name: Restore Cache Poetry dependencies
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            ~/.cache/pypoetry
+            ~/.cache/pip
+          key: ${{ runner.os }}-poetry-${{ matrix.python-version }}
+
+      # Install dependencies with Poetry
+      - name: Install dependencies
+        run: |
           poetry install --no-interaction
 
       - name: Run Ruff linter
@@ -96,6 +112,18 @@ jobs:
         run: |
           curl -sSL https://install.python-poetry.org | python3 -
           export PATH="$HOME/.local/bin:$PATH"
+      
+      - name: Restore Cache Poetry dependencies
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            ~/.cache/pypoetry
+            ~/.cache/pip
+          key: ${{ runner.os }}-poetry-${{ matrix.python-version }}
+
+      # Install dependencies with Poetry
+      - name: Install dependencies
+        run: |
           poetry install --no-interaction
 
       - name: Run Mypy for type checking
@@ -121,6 +149,18 @@ jobs:
         run: |
           curl -sSL https://install.python-poetry.org | python3 -
           export PATH="$HOME/.local/bin:$PATH"
+      
+      - name: Restore Cache Poetry dependencies
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            ~/.cache/pypoetry
+            ~/.cache/pip
+          key: ${{ runner.os }}-poetry-${{ matrix.python-version }}
+
+      # Install dependencies with Poetry
+      - name: Install dependencies
+        run: |
           poetry install --no-interaction
 
       - name: Run Pytest for tests
