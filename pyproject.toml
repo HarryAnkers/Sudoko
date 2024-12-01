@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "src"
+version = "0.1.0"
+description = ""
+authors = ["Harry Ankers <h-ankers@outlook.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">3.10"
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.13.0"
+ruff = "^0.8.1"
+pre-commit = "^4.0.1"
+pytest = "^8.3.4"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+# This is an active choice from pep8 but is an active debate in the python community that I agree with
+line-length = 120

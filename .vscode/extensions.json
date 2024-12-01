@@ -1,0 +1,8 @@
+{
+    "recommendations": [
+        "charliermarsh.ruff",
+        "elagil.pre-commit-helper",
+        "ms-vscode.makefile-tools",
+        "streetsidesoftware.code-spell-checker"
+    ]
+}
