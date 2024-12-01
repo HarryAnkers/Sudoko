@@ -3,6 +3,7 @@
         "charliermarsh.ruff",
         "elagil.pre-commit-helper",
         "ms-vscode.makefile-tools",
-        "streetsidesoftware.code-spell-checker"
+        "streetsidesoftware.code-spell-checker",
+        "github.vscode-github-actions"
     ]
 }
