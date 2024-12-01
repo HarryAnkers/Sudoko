@@ -23,6 +23,20 @@ files = [
 ]
 
 [[package]]
+name = "conventional-pre-commit"
+version = "3.6.0"
+description = "A pre-commit hook that checks commit messages for Conventional Commits formatting."
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "conventional_pre_commit-3.6.0-py3-none-any.whl", hash = "sha256:be12b7f8af4363b5e4959fd540c6529eaf025654027e14d6b1e31aad7689be85"},
+    {file = "conventional_pre_commit-3.6.0.tar.gz", hash = "sha256:53dbfdf557c794c09da98c0acdeb26f61c0b49be07753ccf64d8e5f200d5be3f"},
+]
+
+[package.extras]
+dev = ["black", "build", "coverage", "flake8", "pre-commit", "pytest", "setuptools-scm"]
+
+[[package]]
 name = "distlib"
 version = "0.3.9"
 description = "Distribution utilities"
@@ -409,4 +423,4 @@ test = ["covdefaults (>=2.3)", "coverage (>=7.2.7)", "coverage-enable-subprocess
 [metadata]
 lock-version = "2.0"
 python-versions = ">3.10"
-content-hash = "f655b320ff3778997b0be635a8894baf73f39014f767259a31ddd624514bcd01"
+content-hash = "5172bb3ad132729cec6e4f266ef1cbf0831650cecda1f9c3dc2a6bf11385a770"

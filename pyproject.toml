@@ -13,6 +13,7 @@ mypy = "^1.13.0"
 ruff = "^0.8.1"
 pre-commit = "^4.0.1"
 pytest = "^8.3.4"
+conventional-pre-commit = "^3.6.0"
 
 [build-system]
 requires = ["poetry-core"]
