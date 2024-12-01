@@ -176,8 +176,9 @@ jobs:
           file: htmlcov/index.html  # Path to the HTML coverage report
 
       # Upload the test failure report (JUnit XML format)
-      - name: Upload test failure report
-        uses: actions/upload-artifact@v3
+      - name: Test Report
+        uses: dorny/test-reporter@v1
         with:
-          name: test-results
-          path: reports/test-results.xml
+          name: JUnit Tests            # Name of the check run which will be created
+          path: reports/test-results.xml    # Path to test results
+          reporter: jest-junit        # Format of test results
