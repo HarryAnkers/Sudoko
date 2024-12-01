@@ -41,7 +41,7 @@ jobs:
           path: |
             ~/.cache/pypoetry
             ~/.cache/pip
-          key: ${{ runner.os }}-poetry-${{ matrix.python-version }}
+          key: ${{ runner.os }}-poetry-${{ matrix.python-version }}-${{ hashFiles('**/poetry.lock') }}
 
       # Install dependencies with Poetry
       - name: Install dependencies
@@ -55,7 +55,9 @@ jobs:
           path: |
             ~/.cache/pypoetry
             ~/.cache/pip
-          key: ${{ runner.os }}-poetry-${{ matrix.python-version }}
+          key: |
+            ${{ runner.os }}-poetry-${{ matrix.python-version }}
+            ${{ runner.os }}-poetry-${{ matrix.python-version }}-${{ hashFiles('**/poetry.lock') }}
   lint-ruff:
     needs: install-dependencies
     runs-on: ubuntu-latest
